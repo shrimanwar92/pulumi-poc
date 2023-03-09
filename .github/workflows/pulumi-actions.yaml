@@ -10,9 +10,17 @@ on:
         options: 
         - "examples/cx-dynamodb"
         - "examples/cx-s3"
+      selectAction:
+        type: choice
+        default: up
+        required: true
+        description: Select the action to perform
+        options:
+        - "up"
+        - "preview"
+        - "destroy"
 jobs:
-  preview:
-    name: Preview
+  update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -26,22 +34,10 @@ jobs:
       - name: Installing dependencies 📦️
         run: pip install -r requirements.txt
 
-      - name: Previewing infrastructure
+      - name: ${{ format('{0}', inputs.selectAction) }} infrastructure
         uses: pulumi/actions@v4
         with:
-          command: preview
-          stack-name: dev
-          work-dir: ${{ inputs.selectFolder }}
-  
-  up:
-    name: Up
-    needs: Preview
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploying infrastructure 🚀
-        uses: pulumi/actions@v4
-        with:
-          command: up
+          command: ${{ inputs.selectAction }}
           stack-name: dev
           work-dir: ${{ inputs.selectFolder }}
         env:
