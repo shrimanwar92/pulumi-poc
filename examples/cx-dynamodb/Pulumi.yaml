@@ -1,0 +1,5 @@
+name: cx-dynamodb-example
+runtime: python
+description: A minimal AWS Python Pulumi program to create dynamodb table
+backend:
+  url: s3://pulumi-backend-12345?region=us-east-1
