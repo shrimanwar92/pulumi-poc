@@ -1,5 +1,5 @@
 name: GitHub Actions Demo Pulumi
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ format('Pulumi {0}', inputs.selectAction) }} is running in ${{ inputs.selectFolder }} 🚀
 on:
   workflow_dispatch:
     inputs:
@@ -21,6 +21,7 @@ on:
         - "destroy"
 jobs:
   update:
+    name: ${{ format('Pulumi {0}', inputs.selectAction) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
