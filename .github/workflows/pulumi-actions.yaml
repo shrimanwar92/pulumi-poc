@@ -11,8 +11,8 @@ on:
         - "examples/cx-dynamodb"
         - "examples/cx-s3"
 jobs:
-  up:
-    name: Update
+  preview:
+    name: Preview
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -31,6 +31,19 @@ jobs:
         uses: pulumi/actions@v4
         with:
           command: preview
+          stack-name: dev
+          work-dir: ${{ inputs.selectFolder }}
+  
+  up:
+    name: Up
+    needs: Preview
+    runs-on: ubuntu-latest
+    steps:
+      - name: Previewing infrastructure 🚀
+        run: pip install -r requirements.txt
+        uses: pulumi/actions@v4
+        with:
+          command: up
           stack-name: dev
           work-dir: ${{ inputs.selectFolder }}
         env:
