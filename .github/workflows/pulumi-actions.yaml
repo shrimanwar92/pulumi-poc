@@ -26,8 +26,7 @@ jobs:
       - name: Installing dependencies 📦️
         run: pip install -r requirements.txt
 
-      - name: Previewing infrastructure 🚀
-        run: pip install -r requirements.txt
+      - name: Previewing infrastructure
         uses: pulumi/actions@v4
         with:
           command: preview
@@ -39,8 +38,7 @@ jobs:
     needs: Preview
     runs-on: ubuntu-latest
     steps:
-      - name: Previewing infrastructure 🚀
-        run: pip install -r requirements.txt
+      - name: Deploying infrastructure 🚀
         uses: pulumi/actions@v4
         with:
           command: up
