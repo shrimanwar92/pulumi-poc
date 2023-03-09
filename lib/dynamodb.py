@@ -1,8 +1,14 @@
 import pulumi
 from pulumi_aws import dynamodb
+from typing import TypedDict
+
+class CxDynamodbOpts(TypedDict):
+    table_name: str
+    read_capacity: int
+    write_capacity: int
 
 class CxDynamoDB():
-    def __init__(self, parent: pulumi.ComponentResource, **dbopts):
+    def __init__(self, parent: pulumi.ComponentResource, dbopts: CxDynamodbOpts):
         self.dynamodb: dynamodb.Table = dynamodb.Table(
             resource_name=dbopts['table_name'],
             attributes=[
@@ -12,7 +18,7 @@ class CxDynamoDB():
                 )
             ],
             hash_key='Id',
-            read_capacity=1,
-            write_capacity=1,
+            read_capacity=dbopts.get('read_capacity'),
+            write_capacity=dbopts.get('write_capacity'),
             opts=pulumi.ResourceOptions(parent=parent)
         )
