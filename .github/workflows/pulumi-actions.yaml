@@ -35,7 +35,7 @@ jobs:
       - name: Installing dependencies 📦️
         run: pip install -r requirements.txt
 
-      - name: ${{ format('{0}', inputs.selectAction) }} infrastructure
+      - name: ${{ format('{0}', inputs.selectAction) }} infrastructure 🚀
         uses: pulumi/actions@v4
         with:
           command: ${{ inputs.selectAction }}
