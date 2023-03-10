@@ -16,3 +16,5 @@ class CxS3():
             },
             opts=pulumi.ResourceOptions(parent=self.parent)
         )
+
+        pulumi.export(f'{self.bucket._type}:arn', self.bucket.arn)
