@@ -13,8 +13,7 @@ class CxS3Component(MyComponent):
         my_bucket = CxS3(self, opts)
 
         self.print_outputs({
-            'bucket_name': my_bucket.bucket.bucket,
-            'bucket_arn': my_bucket.bucket.arn
+            'bucket_name': my_bucket.bucket.bucket
         })
 
 # create the custom s3 bucket component
