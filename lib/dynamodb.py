@@ -22,3 +22,5 @@ class CxDynamoDB():
             write_capacity=dbopts.get('write_capacity'),
             opts=pulumi.ResourceOptions(parent=parent)
         )
+
+        pulumi.export(f'{self.dynamodb._type}:arn', self.dynamodb.arn)
