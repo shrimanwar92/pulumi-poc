@@ -10,6 +10,7 @@ on:
         options: 
         - "examples/cx-dynamodb"
         - "examples/cx-s3"
+        - "examples/cx-cw-alb-lambda"
       selectAction:
         type: choice
         default: up
