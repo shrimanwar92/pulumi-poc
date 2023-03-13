@@ -2,3 +2,4 @@ pulumi>=3.0.0,<4.0.0
 pulumi-aws>=5.0.0,<6.0.0
 boto3>=1.26.88,<2.0.0
 pytest>=7.2.2
+pulumi-awsx>=1.0.2

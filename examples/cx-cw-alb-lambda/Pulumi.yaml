@@ -1,0 +1,5 @@
+name: cx-cw-alb-lambda-example
+runtime: python
+description: A minimal AWS Python Pulumi crosswalk program
+backend:
+  url: s3://pulumi-backend-12345?region=us-east-1
